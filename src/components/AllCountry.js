@@ -4,7 +4,8 @@ import uniqueid from 'uniqid';
 
 const AllCountry = (props) => {
     const renderCountryName = () => {
-       return props.allCountryName.map((country)=><li key={uniqueid()}>{country}</li>)
+        if(props.allCountry)
+            return props.allCountry.map((country)=><li onClick={()=>props.currentCountry(country)} key={uniqueid()}>{country.country}</li>)
     }
     return ( 
         <div className="country-name-list">

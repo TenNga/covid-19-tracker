@@ -10,10 +10,22 @@
   padding: 20px;
   flex-basis: 30%;
   border-right: 1px solid rgba(210, 210, 210, 0.29);
-  overflow: scroll;
 }
 
 .display-container {
   padding: 20px;
   flex-basis: 70%;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    display: block;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .side-bar {
+    height: 40%;
+    border-bottom: 1px solid rgba(210, 210, 210, 0.29);
+  }
 }

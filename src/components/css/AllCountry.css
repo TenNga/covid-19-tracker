@@ -1,3 +1,17 @@
 .country-name-list {
     margin: 20px;
+    height: 260px;
+    overflow: scroll;
+}
+
+.country-name-list li{
+    margin: 10px 0px;
+    padding: 3px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.country-name-list li:hover {
+    background-color: gray;
+    color: black;
 }

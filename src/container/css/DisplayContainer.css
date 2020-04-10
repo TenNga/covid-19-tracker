@@ -1,0 +1,9 @@
+#confirmed {
+    color: rgb(67, 67, 177);
+}
+#recovered {
+    color: rgb(95, 125, 95);
+}
+#deaths {
+    color: rgb(215, 110, 110);
+}

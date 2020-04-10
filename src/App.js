@@ -9,7 +9,9 @@ class App extends React.Component {
 
   state = {
     allCountry: "",
-    countryName: []
+    countryName: [],
+    currentCountry: "",
+    totalConfirmed: ""
   }
 
   componentDidMount = () => {
@@ -33,21 +35,31 @@ class App extends React.Component {
   filterCountry = () => {
     if(this.state.allCountry) {
       const allCountry = [];
+      let totalConfirmed = 0;
       this.state.allCountry.forEach((data)=>{
-        allCountry.push(data.country)
+        allCountry.push(data.country);
+        totalConfirmed += data.confirmed;
       })
-      this.setState({countryName: allCountry})
+      this.setState({countryName: allCountry,totalConfirmed: totalConfirmed});
     }
   }
+
+  handleCountrySelected = (country) => {
+    this.setState({currentCountry: country})
+  }
+
   render(){
     console.log("State Datas: ", this.state)
     return (
       <div className="App">
         <div className="side-bar">
-          <SideBarContainer allCountryName={this.state.countryName} allCountry = {this.state.allCountry} />
+          <SideBarContainer 
+            currentCountry={this.handleCountrySelected} 
+            allCountry = {this.state.allCountry} 
+          />
         </div>
         <div className="display-container">
-          <DisplayContainer />
+          <DisplayContainer currentCountry={this.state.currentCountry} totalConfirmed={this.state.totalConfirmed}/>
         </div>
         
       </div>
