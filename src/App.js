@@ -21,7 +21,10 @@ class App extends React.Component {
       }
     })
     .then(response => response.json())
-    .then( datas =>this.setState({allCountry: datas}))
+    .then( datas =>{
+      this.setState({allCountry: datas});
+      this.filterCountry();
+    })
     .catch(err => {
       console.log(err);
     });
@@ -29,9 +32,11 @@ class App extends React.Component {
 
   filterCountry = () => {
     if(this.state.allCountry) {
+      const allCountry = [];
       this.state.allCountry.forEach((data)=>{
-        this.setState({countryName: [...this.state.countryName,data.country]})
+        allCountry.push(data.country)
       })
+      this.setState({countryName: allCountry})
     }
   }
   render(){
@@ -39,7 +44,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="side-bar">
-          <SideBarContainer countryNames={this.filterCountry()}/>
+          <SideBarContainer allCountryName={this.state.countryName} allCountry = {this.state.allCountry} />
         </div>
         <div className="display-container">
           <DisplayContainer />

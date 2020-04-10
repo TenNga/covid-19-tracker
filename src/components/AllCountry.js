@@ -1,8 +1,16 @@
 import React from 'react';
+import './css/AllCountry.css';
 
-const AllCountry = () => {
+const AllCountry = (props) => {
+    const renderCountryName = () => {
+       return props.allCountryName.map((country)=><li>{country}</li>)
+    }
     return ( 
-        <h1>All Country Here</h1>
+        <div className="country-name-list">
+            <ul>
+                {renderCountryName()}
+            </ul>
+        </div>
     )
 }
 
