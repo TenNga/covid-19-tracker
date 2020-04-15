@@ -1,6 +1,6 @@
 .country-name-list {
     margin: 20px;
-    height: 260px;
+    height: 85.5vh;
     overflow-y: scroll;
 }
 
@@ -14,4 +14,22 @@
 .country-name-list li:hover {
     background-color: gray;
     color: black;
+}
+
+@media only screen and (max-width: 600px) {
+    .country-name-list {
+        margin: 20px;
+        height: 30vh;
+        overflow-y: scroll;
+    }
+
+    .country-name-list li{
+        margin:0px;
+        padding: 3px;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid gray;
+        border-radius: 4px;
+    }
 }
