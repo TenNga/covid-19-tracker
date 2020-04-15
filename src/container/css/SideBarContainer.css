@@ -1,3 +1,16 @@
 .side-bar-container{
+    padding-top: 10px;
     text-align: center;
+}
+
+#search-country {
+    margin-top: 10px;
+    border-right: 9px;
+    border: none;
+    width: 300px;
+    height: 30px;
+    border-radius: 9px;
+    padding-left: 4px;
+    font-style: italic;
+    font-weight: lighter;
 }

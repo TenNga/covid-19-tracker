@@ -13,3 +13,7 @@ img {
     max-width: 500px;
     object-fit: contain;
 }
+
+h1,h2 {
+    letter-spacing: 1px;
+}
