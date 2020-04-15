@@ -1,7 +1,7 @@
 .country-name-list {
     margin: 20px;
     height: 260px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .country-name-list li{

@@ -11,7 +11,8 @@ class App extends React.Component {
     allCountry: "",
     countryName: [],
     currentCountry: "",
-    totalConfirmed: ""
+    totalConfirmed: "",
+    moreInfoCountry: ""
   }
 
   componentDidMount = () => {
@@ -30,6 +31,10 @@ class App extends React.Component {
     .catch(err => {
       console.log(err);
     });
+
+    fetch("https://restcountries.eu/rest/v2/all?fields=name;flag;population")
+            .then(resp=>resp.json())
+            .then(datas=> this.setState({moreInfoCountry: datas}))
   }
 
   filterCountry = () => {
@@ -48,6 +53,11 @@ class App extends React.Component {
     this.setState({currentCountry: country})
   }
 
+  getMoreInfoCurrentCountry = () => {
+    if(this.state.moreInfoCountry && this.state.currentCountry)
+      return this.state.moreInfoCountry.find((info)=> info.name.includes(this.state.currentCountry.country) )
+  }
+
   render(){
     console.log("State Datas: ", this.state)
     return (
@@ -59,7 +69,11 @@ class App extends React.Component {
           />
         </div>
         <div className="display-container">
-          <DisplayContainer currentCountry={this.state.currentCountry} totalConfirmed={this.state.totalConfirmed}/>
+          <DisplayContainer 
+            currentCountry={this.state.currentCountry} 
+            totalConfirmed={this.state.totalConfirmed}
+            currentCountryMoreInfo = {this.getMoreInfoCurrentCountry()}
+          />
         </div>
         
       </div>
