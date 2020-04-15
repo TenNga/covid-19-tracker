@@ -19,8 +19,8 @@ Very simple and dark theme with beautiful font for user to get more engage
 
 ## Screens
 ### List of Countries:
-![List of countries](covidScreen1.jpg)
+![List of countries](covidScreen1.JPG)
 
 ### Search Canada and details:
 
-![Canada information](covidScreen2.jpg)
+![Canada information](covidScreen2.JPG)
