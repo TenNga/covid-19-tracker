@@ -2,7 +2,7 @@ import React from 'react';
 import './css/DisplayContainer.css';
 
 const DisplayContainer = ({currentCountry,totalConfirmed,currentCountryMoreInfo}) => {
-    console.log("MOre Information: ", currentCountryMoreInfo)
+    // console.log("MOre Information: ", currentCountryMoreInfo)
     return(
         <div className="display-container">
             {currentCountry? <>
