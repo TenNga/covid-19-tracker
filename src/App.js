@@ -25,7 +25,8 @@ class App extends React.Component {
     })
     .then(response => response.json())
     .then( datas =>{
-      this.setState({allCountry: datas});
+      // this.setState({allCountry: datas});
+      this.convertName(datas);
       this.filterCountry();
     })
     .catch(err => {
@@ -35,6 +36,17 @@ class App extends React.Component {
     fetch("https://restcountries.eu/rest/v2/all?fields=name;flag;population")
             .then(resp=>resp.json())
             .then(datas=> this.setState({moreInfoCountry: datas}))
+  }
+
+  convertName = (countries) => {
+    let allCountries = [];
+    countries.forEach((c)=>{
+      if(c.country !== "USA")
+        allCountries.push(c)
+      else
+        allCountries.push({...c, country:"United States of America"})
+    })
+    this.setState({allCountry: allCountries});
   }
 
   filterCountry = () => {
@@ -62,7 +74,7 @@ class App extends React.Component {
   }
 
   render(){
-    // console.log("State Datas: ", this.state)
+    console.log("State Datas: ", this.state)
     return (
       <div className="App">
         <div className="side-bar">
