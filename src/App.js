@@ -20,7 +20,7 @@ class App extends React.Component {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
-        "x-rapidapi-key": process.env.API_KEY
+        "x-rapidapi-key": "84704a0959mshe69dd18d898a82ep171a1djsn86283313e1e6"
       }
     })
     .then(response => response.json())
