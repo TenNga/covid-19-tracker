@@ -42,6 +42,7 @@ class App extends React.Component {
       const allCountry = [];
       let totalConfirmed = 0;
       this.state.allCountry.forEach((data)=>{
+        // console.log("courntry data: ", data)
         allCountry.push(data.country);
         totalConfirmed += data.confirmed;
       })
@@ -61,7 +62,7 @@ class App extends React.Component {
   }
 
   render(){
-    console.log("State Datas: ", this.state)
+    // console.log("State Datas: ", this.state)
     return (
       <div className="App">
         <div className="side-bar">
