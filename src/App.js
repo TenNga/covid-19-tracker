@@ -1,8 +1,12 @@
 import React from 'react';
+import {getData} from 'country-list';
+
 import './App.css';
+
 
 import DisplayContainer from './container/DisplayContainer';
 import SideBarContainer from './container/SideBarContainer';
+
 
 
 class App extends React.Component {
@@ -12,26 +16,12 @@ class App extends React.Component {
     countryName: [],
     currentCountry: "",
     totalConfirmed: "",
-    moreInfoCountry: ""
+    moreInfoCountry: "",
+    currentCountryInfo: ""
   }
 
   componentDidMount = () => {
-    fetch("https://covid-19-data.p.rapidapi.com/country/all?format=undefined", {
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
-        "x-rapidapi-key": "84704a0959mshe69dd18d898a82ep171a1djsn86283313e1e6"
-      }
-    })
-    .then(response => response.json())
-    .then( datas =>{
-      // this.setState({allCountry: datas});
-      this.convertName(datas);
-      this.filterCountry();
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    this.setState({countryName: this.getOnlyNames()});
 
     fetch("https://restcountries.eu/rest/v2/all?fields=name;flag;population")
             .then(resp=>resp.json())
@@ -41,12 +31,21 @@ class App extends React.Component {
   convertName = (countries) => {
     let allCountries = [];
     countries.forEach((c)=>{
-      if(c.country !== "USA")
-        allCountries.push(c)
+      if(c.name !== "USA")
+        allCountries.push(c.name)
       else
         allCountries.push({...c, country:"United States of America"})
     })
     this.setState({allCountry: allCountries});
+  }
+
+  getOnlyNames = () => {
+    const countries = getData();
+    const allNames = [];
+    countries.forEach( c => {
+      allNames.push(c.name)
+    })
+    return allNames;
   }
 
   filterCountry = () => {
@@ -63,13 +62,25 @@ class App extends React.Component {
   }
 
   handleCountrySelected = (country) => {
-    this.setState({currentCountry: country})
+    // this.setState({currentCountry: country})
+    fetch(`https://covid-19-data.p.rapidapi.com/country?format=json&name=${this.state.currentCountry}`, {
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
+          "x-rapidapi-key": "a461ee32a5msh5fd9354481c98c3p1d96dajsn15d69c0af6c8"
+        }
+      })
+      .then(response => response.json())
+      .then(data => this.setState({currentCountry: country,currentCountryInfo: data[0]}))
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   getMoreInfoCurrentCountry = () => {
     if(this.state.moreInfoCountry && this.state.currentCountry)
       return this.state.moreInfoCountry.find((info)=> {
-       return  info.name.includes(this.state.currentCountry.country) || this.state.currentCountry.country.includes(info.name)
+       return  info.name.includes(this.state.currentCountry) || this.state.currentCountry.includes(info.name)
       })
   }
 
@@ -80,13 +91,14 @@ class App extends React.Component {
         <div className="side-bar">
           <SideBarContainer 
             currentCountry={this.handleCountrySelected} 
-            allCountry = {this.state.allCountry} 
+            allCountry = {this.state.countryName} 
           />
         </div>
         <div className="display-container">
           <DisplayContainer 
             currentCountry={this.state.currentCountry} 
-            totalConfirmed={this.state.totalConfirmed}
+            countryInfo = {this.state.currentCountryInfo}
+            //totalConfirmed={this.state.totalConfirmed}
             currentCountryMoreInfo = {this.getMoreInfoCurrentCountry()}
           />
         </div>
