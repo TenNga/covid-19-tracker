@@ -63,7 +63,7 @@ class App extends React.Component {
 
   handleCountrySelected = (country) => {
     // this.setState({currentCountry: country})
-    fetch(`https://covid-19-data.p.rapidapi.com/country?format=json&name=${this.state.currentCountry}`, {
+    fetch(`https://covid-19-data.p.rapidapi.com/country?format=json&name=${country}`, {
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
@@ -71,7 +71,7 @@ class App extends React.Component {
         }
       })
       .then(response => response.json())
-      .then(data => this.setState({currentCountry: country,currentCountryInfo: data[0]}))
+      .then(data => this.setState({currentCountryInfo: data[0], currentCountry: country}))
       .catch(err => {
         console.log(err);
       });
@@ -83,6 +83,7 @@ class App extends React.Component {
        return  info.name.includes(this.state.currentCountry) || this.state.currentCountry.includes(info.name)
       })
   }
+
 
   render(){
     console.log("State Datas: ", this.state)
