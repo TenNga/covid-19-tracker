@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
     const DisplayBody = styled.div`
-        margin: 50px 20px;
+        margin: 0;
         text-align: center;
         & img {
             width: 100%;
@@ -32,7 +32,7 @@ import styled from 'styled-components';
 
 
 const DisplayContainer = ({currentCountry,totalConfirmed,currentCountryMoreInfo,countryInfo}) => {
-    console.log("MOre Information: ", countryInfo)
+    // console.log("MOre Information: ", countryInfo)
 
 
     return(
