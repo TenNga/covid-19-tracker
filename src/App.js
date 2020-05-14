@@ -80,7 +80,7 @@ class App extends React.Component {
   getMoreInfoCurrentCountry = () => {
     if(this.state.moreInfoCountry && this.state.currentCountry)
       return this.state.moreInfoCountry.find((info)=> {
-       return  info.name.includes(this.state.currentCountry) || this.state.currentCountry.includes(info.name)
+       return  info.name == this.state.currentCountry || this.state.currentCountry.includes(info.name)
       })
   }
 

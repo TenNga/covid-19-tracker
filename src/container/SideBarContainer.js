@@ -14,7 +14,7 @@ class SideBarContainer extends React.Component {
     filterCountryByTerm = () => {
         if(this.state.term){
            return this.props.allCountry.filter((country)=>{
-                return country.country.toUpperCase().includes(this.state.term.toUpperCase())
+                return country.toUpperCase().includes(this.state.term.toUpperCase())
             })
         } else {
             return this.props.allCountry
