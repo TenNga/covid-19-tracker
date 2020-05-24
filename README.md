@@ -10,6 +10,12 @@ During this pandemic, everyone was not ready for it, but we are all united and h
 
 Very simple and dark theme with beautiful font for user to get more engage 
 
+### Run Locally
+
+- clone the repo
+- npm install
+- npm start
+
 ### Tools Used: 
  
 - React, JavaScript, HTML, CSS, GitHub
