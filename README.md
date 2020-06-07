@@ -8,7 +8,7 @@ During this pandemic, everyone was not ready for it, but we are all united and h
 
 ### Design
 
-Very simple and dark theme with beautiful font for user to get more engage 
+Very simple and dark theme with beautiful font for user to get more engage and with responsive design, user can visit the sit in any device including mobile, ipad and large displays. Split design for mobile makes user able to scroll throught country names while at current country information.
 
 ### Run Locally
 
