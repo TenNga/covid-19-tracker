@@ -46,7 +46,7 @@ const DisplayContainer = ({currentCountry,totalConfirmed,currentCountryMoreInfo,
                 <h2>Population: <span>{currentCountryMoreInfo.population}</span></h2>
                 <img src={currentCountryMoreInfo.flag} alt="country flag" /></>
                 : null }
-                </> : <h1>Total Confirmed: {totalConfirmed}</h1>}
+                </> : <h1>Choose a Country From the List</h1>}
         </DisplayBody>
     )
 }
